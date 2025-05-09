@@ -31,7 +31,7 @@ class _QuizState extends State<Quiz> {
   //init state is a method that is called when the widget is first created
   // void initState() {
   //   activeScreen =  StartScreen(SwitchScreen);
-    // TODO: implement initState
+    
   //   super.initState();
   // }
 
@@ -46,10 +46,15 @@ class _QuizState extends State<Quiz> {
 
 
   @override
-  Widget build(BuildContext context) {
-      final screenWidget =  activeScreen == 'start-screen'
-           ? StartScreen(switchScreen) 
-           : const QuestionsScreen();
+  Widget build(context) {
+      Widget screenWidget =  StartScreen(switchScreen);
+
+    if (activeScreen == 'questions-screen') {
+      // activeScreen = QuestionsScreen();
+      
+      screenWidget = const QuestionsScreen();
+    } 
+
 
 
     return 
