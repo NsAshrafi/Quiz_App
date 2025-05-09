@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
   // {super.key} --> you want to accept argument name key and forward in to the super class
-  const StartScreen({super.key});
+  //start quiz is a function that will be called when the button is pressed
+  //this function is passed as an argument to the StartScreen constructor
+  //this function is used to swich between screens
+  // this function doesnt return a value
+ const StartScreen( this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(context) {
@@ -30,9 +36,7 @@ class StartScreen extends StatelessWidget {
         // add space between text and the button
        const SizedBox(height: 30),
        OutlinedButton.icon(
-        onPressed: (
-          //....
-        ) {},
+        onPressed: startQuiz,
         style: OutlinedButton.styleFrom(
           foregroundColor: Colors.white
         ),
