@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
+
   const Quiz({super.key});
 
   @override
@@ -13,6 +15,11 @@ class Quiz extends StatefulWidget {
 //ایجاد می‌کنی، باید یک کلاس State
 // هم براش بسازی که مسئول تغییرات و به‌روزرسانی ویجت در زمان اجرا هست.
 class _QuizState extends State<Quiz> {
+
+  final List<String>  selectedAnswer = [];
+  // this is a list that will be used to store the selected answers
+  // this is a variable that will be used to store the current screen
+  // and it will be used to switch between screens
   var activeScreen = 'start-screen';
 
   //swich screen
@@ -45,6 +52,22 @@ class _QuizState extends State<Quiz> {
   }
 
 
+  void chooseAnswer(String answer) {
+    // this function will be called when the user taps on an answer button
+    selectedAnswer.add(answer);
+    // this will add the selected answer to the list of selected answers
+    // and it will be used to show the selected answers on the results screen
+
+    if (selectedAnswer.length == questions.length) {
+      setState(() {
+        activeScreen = 'results-screen';
+          
+      });
+    }
+  
+  }
+
+
   @override
   Widget build(context) {
       Widget screenWidget =  StartScreen(switchScreen);
@@ -52,7 +75,9 @@ class _QuizState extends State<Quiz> {
     if (activeScreen == 'questions-screen') {
       // activeScreen = QuestionsScreen();
       
-      screenWidget = const QuestionsScreen();
+      screenWidget =  QuestionsScreen(
+        onSelectAnswer: chooseAnswer,
+        );
     } 
 
 

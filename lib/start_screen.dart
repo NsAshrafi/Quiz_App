@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class StartScreen extends StatelessWidget {
   // {super.key} --> you want to accept argument name key and forward in to the super class
@@ -26,10 +28,10 @@ class StartScreen extends StatelessWidget {
         const SizedBox(
           height: 80,
         ),
-        const Text(
+         Text(
           'Learn Flutter The Fun Way!',
-          style: TextStyle(
-            color: Color.fromARGB(255, 238, 192, 255),
+          style: GoogleFonts.cinzel(
+            color:const Color.fromARGB(255, 238, 192, 255),
             fontSize: 24,
           ),
         ),
